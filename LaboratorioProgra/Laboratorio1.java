@@ -8,66 +8,74 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class opciones {
+public class Opciones {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String turno = "";
-        // while (!turno.equals("1") && !turno.equals("2")) {
-        // System.out.println("Si desea lanzar el dado ingrese: 1; si desea saltar
-        // turno, ingrese: 2. ");
-        // turno = scanner.nextLine();
-        // }
+        String turno;
+        String p1 = "Jugador 1";
+        String p2 = "Jugador 2";
+        int puntaje1 = 0;
+        int puntaje2 = 0;
+        int dado1, dado2;
+        Random rand = new Random();
 
-    }}
+        while (puntaje1 < 100 && puntaje2 < 100) {
+            System.out.println("Turno de: " + p1 + ". Puntaje: " + puntaje1);
+            System.out.println();
 
-    System.out.println("REGLAS. En cada turno, cada jugardor tira el dado hasta que saca un 1 o el jugador decide plantarse. Si saca un 1, el jugardor pierde los puntos conseguidos y tira el turno pasa al siguiente jugador. Si el jugador decide plantarse, suma a su marcador todos los puntos que ha consiguido con el dad en ese turno.");
+            do {
+                System.out.println("Si desea lanzar el dado ingrese: 1; si desea saltar turno, ingrese: 2.");
+                turno = scanner.nextLine();
+            } while (!turno.equals("1") && !turno.equals("2"));
 
-    String p1 = player1;
-    String p2 = player2;
-    int puntaje1 = score1.get(p1);
-    int puntaje2 = score2.get(p2);
-    Random rand = new Random();
+            if (turno.equals("1")) {
+                dado1 = rand.nextInt(6) + 1;
+                dado2 = rand.nextInt(6) + 1;
 
-    while(puntaje1<100&&puntaje2<100);System.out.println("Turno de: "+p1+". Puntaje: "+puntaje1);System.out.println();
+                System.out.println("Valor del dado 1: " + dado1);
+                System.out.println("Valor del dado 2: " + dado2);
 
-    do
-    {
-        System.out.println("Si desea lanzar el dado ingrese: 1; si desea saltar turno, ingrese: 2.");
-        turno = scanner.next().charAt(0);
-    }while(!turno.equals("1")&&!turno.equals("2"));
-
-    if(turno==1){
-        dado1=rand.nextInt(6);
-        dado2=rand.nextInt(6);
-
-        System.out.println("Valor del dado 1: "+ dado1);
-        System.out.println("Valor del dado 2: "+ dado2);
-
-        if(dado1==1||dado2==1){
-            puntaje1 = puntaje1 * 0
+                if (dado1 == 1 || dado2 == 1) {
+                    puntaje1 = puntaje * 0;
+                } else {
+                    puntaje1 = puntaje1 + dado1 + dado2;
+                }
             }
-        else{
-            puntaje1 = puntaje1 + dado1 + dado2
+
+            if (puntaje1 >= 100) {
+                break;
+            }
+
+            System.out.println("Turno de: " + p2 + ". Puntaje: " + puntaje2);
+            System.out.println();
+
+            do {
+                System.out.println("Si desea lanzar el dado ingrese: 1; si desea saltar turno, ingrese: 2.");
+                turno = scanner.nextLine();
+            } while (!turno.equals("1") && !turno.equals("2"));
+
+            if (turno.equals("1")) {
+                dado1 = rand.nextInt(6) + 1;
+                dado2 = rand.nextInt(6) + 1;
+
+                System.out.println("Valor del dado 1: " + dado1);
+                System.out.println("Valor del dado 2: " + dado2);
+
+                if (dado1 == 1 || dado2 == 1) {
+                    puntaje2 = puntaje * 0;
+                } else {
+                    puntaje2 = puntaje2 + dado1 + dado2;
+                }
+            }
+        }
+
+        if (puntaje1 >= 100) {
+            System.out.println("Ha ganado el " + p1);
+        } else {
+            System.out.println("Ha ganado el " + p2);
         }
     }
-
-    if(turno==2){
-        System.out.println("Turno de: " + p2 + ". Puntaje: " + puntaje2);
-        System.out.println();
-
-        dado1=rand.nextInt(6);
-        dado2=rand.nextInt(6);
-
-        System.out.println("Valor del dado 1: "+ dado1);
-        System.out.println("Valor del dado 2: "+ dado2);
-
-        if(dado1==1||dado2==1){
-            puntaje2 = puntaje2 * 0
-            }
-        else{
-            puntaje2 = puntaje2 + dado1 + dado2
-        }
-    }
+}
 
 // Nota1. No me permite probar el código por un error de compilación, muy
 // probablemente no funcione D:
